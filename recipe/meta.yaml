@@ -1,4 +1,4 @@
-{% set version = "4.2.1" %}
+{% set version = "4.2.2" %}
 {% set name = "pyobjc-framework-Cocoa" %}
 
 package:
@@ -8,7 +8,7 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 8ef446b1803b2392ce4df1a3600e8d5f1bc577206d57e30142c8425555009000
+  sha256: 99b33ab038b90e8866e4cb510213f235c3010982fa425d8f34850c45ece30c43
 
 build:
   number: 0
