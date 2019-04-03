@@ -1,4 +1,4 @@
-{% set version = "5.1.2" %}
+{% set version = "5.2" %}
 {% set name = "pyobjc-framework-Cocoa" %}
 
 package:
@@ -8,10 +8,10 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: a13f451071b7bd00e773874ddf5de4618c121448312d3409dac93a0bcc71962e
+  sha256: 561785bbc4dd2f05cc836464733382ef6a69cb13338a7bc5f8297f5cd021d0bd
 
 build:
-  number: 1000
+  number: 0
   script: python setup.py install --single-version-externally-managed --record record.txt
   skip: true  # [not osx]
 
