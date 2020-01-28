@@ -12,19 +12,24 @@ source:
 
 build:
   number: 0
+  script: "{{ PYTHON }} -m pip install . -vv"
   script: python setup.py install --single-version-externally-managed --record record.txt
-  skip: true  # [not osx]
+  skip: true  # [(not osx) or py2k]
 
 requirements:
-  build:
+  host:
     - python
+    - pip
     - setuptools
-
   run:
     - python
     - pyobjc-core
 
 test:
+  requires:
+    - pip
+  commands:
+    - pip check
   imports:
     - AppKit
     - Cocoa
