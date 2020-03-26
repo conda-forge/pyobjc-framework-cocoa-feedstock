@@ -1,4 +1,4 @@
-{% set version = "6.1" %}
+{% set version = "6.2" %}
 {% set name = "pyobjc-framework-Cocoa" %}
 
 package:
@@ -8,11 +8,11 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: c4077d2e6f96e4f3fd9780d66778cf51d27f414822498b24410e9df7a6a4d531
+  sha256: e15bbf82bfe3a14dfd29c7465cc5d8edab16d546410239b7e1a4db62ded4a5b2
 
 build:
-  number: 1
-  script: "{{ PYTHON }} -m pip install . -vv"
+  number: 0
+  script: {{ PYTHON }} -m pip install . -vv
   skip: true  # [(not osx) or py2k]
 
 requirements:
