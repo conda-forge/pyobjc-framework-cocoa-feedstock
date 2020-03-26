@@ -11,9 +11,8 @@ source:
   sha256: c4077d2e6f96e4f3fd9780d66778cf51d27f414822498b24410e9df7a6a4d531
 
 build:
-  number: 0
+  number: 1
   script: "{{ PYTHON }} -m pip install . -vv"
-  script: python setup.py install --single-version-externally-managed --record record.txt
   skip: true  # [(not osx) or py2k]
 
 requirements:
