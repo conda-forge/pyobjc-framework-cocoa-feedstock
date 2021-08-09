@@ -12,8 +12,7 @@ source:
 
 build:
   number: 0
-  script: CFLAGS="-Wno-nullability-completeness ${CFLAGS}" {{ PYTHON }} -m pip install . -vv  # [arm64]
-  script: {{ PYTHON }} -m pip install . -vv  # [not arm64]
+  script: {{ PYTHON }} -m pip install . -vv
   skip: true  # [(not osx) or py2k or python_impl == 'pypy' or (arm64 and py < 39)]
 
 requirements:
