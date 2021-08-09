@@ -13,9 +13,12 @@ source:
 build:
   number: 0
   script: {{ PYTHON }} -m pip install . -vv
-  skip: true  # [(not osx) or py2k or python_impl == 'pypy']
+  skip: true  # [(not osx) or py2k or python_impl == 'pypy' or (arm64 and py < 39)]
 
 requirements:
+  build:
+    - python                                 # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
   host:
     - python
     - pip
@@ -37,10 +40,11 @@ test:
     - PyObjCTools
 
 about:
-  home: https://bitbucket.org/ronaldoussoren/pyobjc
+  home: https://github.com/ronaldoussoren/pyobjc
   license: MIT
   license_file: LICENSE.txt
   summary: Wrappers for the Cocoa frameworks on Mac OS X
+  doc_url: https://pyobjc.readthedocs.io/en/latest/
 
 extra:
   recipe-maintainers:
