@@ -27,6 +27,7 @@ requirements:
   run:
     - python
     - pyobjc-core >=7.1
+    - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("11.0") }}  # [arm64]
 
 test:
   requires:
