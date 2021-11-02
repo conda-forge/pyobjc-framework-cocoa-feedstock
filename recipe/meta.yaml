@@ -9,6 +9,8 @@ source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: b18d05e7a795a3455ad191c3e43d6bfa673c2a4fd480bb1ccf57191051b80b7e
+#  patches:
+#    - fix_for_conda_build.diff
 
 build:
   number: 1
@@ -27,11 +29,9 @@ requirements:
     - python
     - pip
     - setuptools
-    - libffi
   run:
     - python
     - pyobjc-core >=7.1
-    - libffi
 
 test:
   requires:
@@ -44,6 +44,8 @@ test:
     - CoreFoundation
     - Foundation
     - PyObjCTools
+  commands:
+    - DYLD_PRINT_LIBRARIES=1 python -c "import AppKit"
 
 about:
   home: https://github.com/ronaldoussoren/pyobjc
