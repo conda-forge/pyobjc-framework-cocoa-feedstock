@@ -38,12 +38,12 @@ test:
     - pip
   commands:
     - pip check
-  imports:
-    - AppKit
-    - Cocoa
-    - CoreFoundation
-    - Foundation
-    - PyObjCTools
+  #imports:
+  #  - AppKit
+  #  - Cocoa
+  #  - CoreFoundation
+  #  - Foundation
+  #  - PyObjCTools
   commands:
     - DYLD_PRINT_LIBRARIES=1 python -c "import AppKit"
 
