@@ -31,7 +31,7 @@ requirements:
     - setuptools
   run:
     - python
-    - pyobjc-core =7.3=*_2  # this version still uses system libffi
+    - pyobjc-core =7.3=*_1  # this version still uses system compiler and libffi
     #- libffi =3.3.*
 
 test:
