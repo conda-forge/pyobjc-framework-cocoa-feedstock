@@ -33,7 +33,7 @@ requirements:
     - python
     - pyobjc-core {{ version }}
     - libffi
-    #- pyobjc-core =7.3=*_2  # this version still uses system libffi
+    #- pyobjc-core =7.3=*_1  # this version still uses system compiler and libffi 3.3
     #- libffi =3.3.*
 
 test:
