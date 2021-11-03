@@ -31,12 +31,15 @@ requirements:
     - setuptools
   run:
     - python
-    - pyobjc-core =7.3=*_2  # this version still uses system libffi
+    - pyobjc-core {{ version }}
+    - libffi
+    #- pyobjc-core =7.3=*_2  # this version still uses system libffi
     #- libffi =3.3.*
 
 test:
   requires:
     - pip
+    - lldb
   commands:
     - pip check
   #imports:
@@ -46,7 +49,8 @@ test:
   #  - Foundation
   #  - PyObjCTools
   commands:
-    - DYLD_PRINT_LIBRARIES=1 python -c "import AppKit"
+    #- DYLD_PRINT_LIBRARIES=1 python -c "import AppKit"
+    - lldb -o 'process launch' -- python -c "import AppKit"
 
 about:
   home: https://github.com/ronaldoussoren/pyobjc
