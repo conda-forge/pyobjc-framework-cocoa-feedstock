@@ -9,17 +9,14 @@ source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: b18d05e7a795a3455ad191c3e43d6bfa673c2a4fd480bb1ccf57191051b80b7e
-  patches:
-    - fix_for_conda_build.diff
 
 build:
   number: 2
   script:
     # force pyobjc to use conda-forge's chosen SDK
     - export CFLAGS="${CFLAGS} -isysroot ${SDKROOT:-$CONDA_BUILD_SYSROOT}"
-    # force removing invalid compiler flag
-    - export LDFLAGS=`echo "${LDFLAGS}" | sed "s/-Wl,-export_dynamic//g"`
-    - export LDFLAGS_LD=`echo "${LDFLAGS_LD}" | sed "s/-export_dynamic//g"`
+    # force ignoring invalid compiler flag (-Wl,-export-dynamic)
+    - export CFLAGS="${CFLAGS} -Wno-unused-command-line-argument"  # [py == 37 or py == 38]
     - {{ PYTHON }} -m pip install . -vv
   skip: true  # [(not osx) or py2k or python_impl == 'pypy' or (arm64 and py < 39)]
 
