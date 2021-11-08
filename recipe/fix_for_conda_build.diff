@@ -1,8 +1,8 @@
 diff --git a/pyobjc-framework-Cocoa/pyobjc_setup.py b/pyobjc-framework-Cocoa/pyobjc_setup.py
-index 39d9889cb..2b685f3f7 100644
+index 39d9889cb..c883af56e 100644
 --- a/pyobjc-framework-Cocoa/pyobjc_setup.py
 +++ b/pyobjc-framework-Cocoa/pyobjc_setup.py
-@@ -202,6 +202,32 @@ def get_os_level():
+@@ -202,6 +202,33 @@ def get_os_level():
      return ".".join(v.split(".")[:2])
  
  
@@ -29,6 +29,7 @@ index 39d9889cb..2b685f3f7 100644
 +_ldshared[0] = os.environ['CC']
 +_ldshared = ' '.join(_ldshared) + ' ' + os.environ['LDFLAGS'] + ' ' + os.environ['CPPFLAGS']
 +_ldshared = _ldshared.replace("-Wl,-dead_strip_dylibs", "")
++_ldshared = _ldshared.replace("-Wl,-export_dynamic", "")
 +get_config_vars()["LDSHARED"] = _ldshared
 +
 +
