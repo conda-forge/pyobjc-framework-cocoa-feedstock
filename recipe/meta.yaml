@@ -11,24 +11,29 @@ source:
   sha256: b18d05e7a795a3455ad191c3e43d6bfa673c2a4fd480bb1ccf57191051b80b7e
 
 build:
-  number: 1
+  number: 2
   script:
     # force pyobjc to use conda-forge's chosen SDK
     - export CFLAGS="${CFLAGS} -isysroot ${SDKROOT:-$CONDA_BUILD_SYSROOT}"
+    # force ignoring invalid compiler flag (-Wl,-export-dynamic)
+    - export CFLAGS="${CFLAGS} -Wno-unused-command-line-argument"  # [py == 37 or py == 38]
     - {{ PYTHON }} -m pip install . -vv
   skip: true  # [(not osx) or py2k or python_impl == 'pypy' or (arm64 and py < 39)]
 
 requirements:
   build:
+    - {{ compiler('c') }}
     - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
   host:
     - python
     - pip
     - setuptools
+    - libffi
   run:
     - python
-    - pyobjc-core >=7.1
+    - pyobjc-core {{ version }}
+    - libffi
 
 test:
   requires:
