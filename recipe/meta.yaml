@@ -17,6 +17,9 @@ build:
   script:
     # force pyobjc to use conda-forge's chosen SDK
     - export CFLAGS="${CFLAGS} -isysroot ${SDKROOT:-$CONDA_BUILD_SYSROOT}"
+    # force removing invalid compiler flag
+    - export LDFLAGS=`echo "${LDFLAGS}" | sed "s/-Wl,-export_dynamic//g"`
+    - export LDFLAGS_LD=`echo "${LDFLAGS_LD}" | sed "s/-export_dynamic//g"`
     - {{ PYTHON }} -m pip install . -vv
   skip: true  # [(not osx) or py2k or python_impl == 'pypy' or (arm64 and py < 39)]
 

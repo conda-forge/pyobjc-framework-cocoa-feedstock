@@ -1,5 +1,5 @@
 diff --git a/pyobjc-framework-Cocoa/pyobjc_setup.py b/pyobjc-framework-Cocoa/pyobjc_setup.py
-index 39d9889cb..184448d4a 100644
+index 39d9889cb..426d5df6f 100644
 --- a/pyobjc-framework-Cocoa/pyobjc_setup.py
 +++ b/pyobjc-framework-Cocoa/pyobjc_setup.py
 @@ -202,6 +202,41 @@ def get_os_level():
@@ -38,7 +38,7 @@ index 39d9889cb..184448d4a 100644
 +    if isinstance(v, str) and "-Wl,-export_dynamic" in v:
 +        cfg_vars[k] = v.replace("-Wl,-export_dynamic", "")
 +        print("PATCH: remove linker flags...")
-+        print("  ...fixed:", k, ' '.join(cfg_vars[k]))
++        print("  ...fixed:", k, cfg_vars[k])
 +
 +
  def get_sdk():
