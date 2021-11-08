@@ -1,8 +1,8 @@
 diff --git a/pyobjc-framework-Cocoa/pyobjc_setup.py b/pyobjc-framework-Cocoa/pyobjc_setup.py
-index 39d9889cb..c883af56e 100644
+index 39d9889cb..184448d4a 100644
 --- a/pyobjc-framework-Cocoa/pyobjc_setup.py
 +++ b/pyobjc-framework-Cocoa/pyobjc_setup.py
-@@ -202,6 +202,33 @@ def get_os_level():
+@@ -202,6 +202,41 @@ def get_os_level():
      return ".".join(v.split(".")[:2])
  
  
@@ -29,8 +29,16 @@ index 39d9889cb..c883af56e 100644
 +_ldshared[0] = os.environ['CC']
 +_ldshared = ' '.join(_ldshared) + ' ' + os.environ['LDFLAGS'] + ' ' + os.environ['CPPFLAGS']
 +_ldshared = _ldshared.replace("-Wl,-dead_strip_dylibs", "")
-+_ldshared = _ldshared.replace("-Wl,-export_dynamic", "")
 +get_config_vars()["LDSHARED"] = _ldshared
++
++
++# another try to remove "-Wl,-export_dynamic"
++cfg_vars = get_config_vars()
++for k, v in cfg_vars.items():
++    if isinstance(v, str) and "-Wl,-export_dynamic" in v:
++        cfg_vars[k] = v.replace("-Wl,-export_dynamic", "")
++        print("PATCH: remove linker flags...")
++        print("  ...fixed:", k, ' '.join(cfg_vars[k]))
 +
 +
  def get_sdk():
