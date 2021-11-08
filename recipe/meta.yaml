@@ -9,11 +9,11 @@ source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: b18d05e7a795a3455ad191c3e43d6bfa673c2a4fd480bb1ccf57191051b80b7e
-#  patches:
-#    - fix_for_conda_build.diff
+  patches:
+    - fix_for_conda_build.diff
 
 build:
-  number: 1
+  number: 2
   script:
     # force pyobjc to use conda-forge's chosen SDK
     - export CFLAGS="${CFLAGS} -isysroot ${SDKROOT:-$CONDA_BUILD_SYSROOT}"
@@ -29,17 +29,15 @@ requirements:
     - python
     - pip
     - setuptools
+    - libffi
   run:
     - python
     - pyobjc-core {{ version }}
     - libffi
-    #- pyobjc-core =7.3=*_1  # this version still uses system compiler and libffi 3.3
-    #- libffi =3.3.*
 
 test:
   requires:
     - pip
-  #  - lldb
   commands:
     - pip check
   imports:
@@ -48,9 +46,6 @@ test:
     - CoreFoundation
     - Foundation
     - PyObjCTools
-  commands:
-    - DYLD_PRINT_LIBRARIES=1 python -c "import AppKit"
-    #- lldb -o 'process launch' -- python -c "import AppKit"
 
 about:
   home: https://github.com/ronaldoussoren/pyobjc
