@@ -174,4 +174,5 @@ Feedstock Maintainers
 
 * [@jschueller](https://github.com/jschueller/)
 * [@leofang](https://github.com/leofang/)
+* [@xhochy](https://github.com/xhochy/)
 
