@@ -1,4 +1,4 @@
-{% set version = "10.0" %}
+{% set version = "10.1" %}
 {% set name = "pyobjc-framework-Cocoa" %}
 
 package:
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 723421eff4f59e4ca9a9bb8ec6dafbc0f778141236fa85a49fdd86732d58a74c
+  sha256: 8faaf1292a112e488b777d0c19862d993f3f384f3927dc6eca0d8d2221906a14
   patches:
     - 0001-Remove-Werror-from-cflags.patch
 
 build:
-  number: 1
+  number: 0
   script:
     # force pyobjc to use conda-forge's chosen SDK
     - export CFLAGS="${CFLAGS} -isysroot ${SDKROOT:-$CONDA_BUILD_SYSROOT}"
