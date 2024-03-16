@@ -1,4 +1,4 @@
-{% set version = "10.1" %}
+{% set version = "10.2" %}
 {% set name = "pyobjc-framework-Cocoa" %}
 
 package:
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 8faaf1292a112e488b777d0c19862d993f3f384f3927dc6eca0d8d2221906a14
+  sha256: 6383141379636b13855dca1b39c032752862b829f93a49d7ddb35046abfdc035
   patches:
     - 0001-Remove-Werror-from-cflags.patch
 
