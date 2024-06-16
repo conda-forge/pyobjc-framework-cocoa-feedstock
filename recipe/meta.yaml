@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/pyobjc_framework_cocoa-{{ version }}.tar.gz
-  sha256: 6383141379636b13855dca1b39c032752862b829f93a49d7ddb35046abfdc035
+  sha256: 1cf20714daaa986b488fb62d69713049f635c9d41a60c8da97d835710445281a
   patches:
     - 0001-Remove-Werror-from-cflags.patch
 
