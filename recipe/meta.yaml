@@ -1,4 +1,4 @@
-{% set version = "10.2" %}
+{% set version = "10.3.1" %}
 {% set name = "pyobjc-framework-Cocoa" %}
 
 package:
@@ -6,8 +6,8 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 6383141379636b13855dca1b39c032752862b829f93a49d7ddb35046abfdc035
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/pyobjc_framework_cocoa-{{ version }}.tar.gz
+  sha256: 1cf20714daaa986b488fb62d69713049f635c9d41a60c8da97d835710445281a
   patches:
     - 0001-Remove-Werror-from-cflags.patch
 
@@ -24,6 +24,7 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib('c') }}
     - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
   host:
