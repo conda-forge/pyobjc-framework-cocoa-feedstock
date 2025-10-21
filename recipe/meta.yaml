@@ -1,4 +1,4 @@
-{% set version = "11.1" %}
+{% set version = "12.0" %}
 {% set name = "pyobjc-framework-Cocoa" %}
 
 package:
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/pyobjc_framework_cocoa-{{ version }}.tar.gz
-  sha256: 87df76b9b73e7ca699a828ff112564b59251bb9bbe72e610e670a4dc9940d038
+  sha256: 02d69305b698015a20fcc8e1296e1528e413d8cf9fdcd590478d359386d76e8a
 
 build:
-  number: 1
+  number: 0
   script:
     # force pyobjc to use conda-forge's chosen SDK
     - export CFLAGS="${CFLAGS} -isysroot ${SDKROOT:-$CONDA_BUILD_SYSROOT}"
