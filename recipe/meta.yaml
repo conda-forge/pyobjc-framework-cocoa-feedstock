@@ -1,4 +1,4 @@
-{% set version = "12.2.1" %}
+{% set version = "12.2.2" %}
 {% set name = "pyobjc-framework-Cocoa" %}
 
 package:
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/pyobjc_framework_cocoa-{{ version }}.tar.gz
-  sha256: b94b37fe5730e5ae1fb0052912cd174e6ec329b0bfba4a012ae5db1014b5864b
+  sha256: c96c0ef69a71afbbb0e6a7d594b455c5fe47d62e0db376ee7a2b4b828c16ace9
 
 build:
   number: 0
