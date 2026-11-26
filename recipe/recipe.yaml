@@ -1,7 +1,7 @@
 schema_version: 1
 
 context:
-  version: "13.0"
+  version: "13.1"
   name: pyobjc-framework-Cocoa
 
 package:
@@ -10,10 +10,10 @@ package:
 
 source:
   url: https://files.pythonhosted.org/packages/source/${{ name[0] }}/${{ name }}/pyobjc_framework_cocoa-${{ version }}.tar.gz
-  sha256: bb7a23941fc8d7866578dbc84e56140efd343a1d28510f530dd1dbf80807daf4
+  sha256: 2f373dedbfffc236ed2f6278b45ea5f053940e621a486b2e9f4d23a06b06ba22
 
 build:
-  number: 1
+  number: 0
   skip:
     - not osx
   script:
